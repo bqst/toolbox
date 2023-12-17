@@ -4,12 +4,12 @@ export const Icons = {
   logo: (props: IconProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" {...props}>
       <g
-        stroke-linecap="square"
-        stroke-width="2"
+        strokeLinecap="square"
+        strokeWidth="2"
         fill="none"
         stroke="currentColor"
-        stroke-linejoin="miter"
-        stroke-miterlimit="10"
+        strokeLinejoin="miter"
+        strokeMiterlimit="10"
       >
         <path d="M56,58H8a5,5,0,0,1-5-5V6H24l6,10H61V53A5,5,0,0,1,56,58Z"></path>
         <circle cx="32" cy="37" r="3"></circle>

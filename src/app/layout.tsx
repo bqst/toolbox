@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
 import { siteConfig } from '@/config/site'
+import { Viewport } from 'next'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -14,6 +15,7 @@ export const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -27,10 +29,7 @@ export const metadata: Metadata = {
     },
   ],
   creator: 'bqst',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -60,6 +59,13 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 }
 
 export default function RootLayout({
