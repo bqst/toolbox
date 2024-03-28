@@ -1,20 +1,20 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
 import { ButtonCopy } from '@/components/copy-button'
+import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
-import { useEffect, useState, useMemo, useCallback } from 'react'
-import { RefreshCcw } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
+import { RefreshCcw } from 'lucide-react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 const WEAKNESSES = ['very weak', 'weak', 'good', 'strong', 'very strong']
 
@@ -96,7 +96,7 @@ const SecretForm = () => {
       </div>
       <div className="flex relative">
         {score !== 0 && (
-          <TooltipProvider>
+          <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
                 <span

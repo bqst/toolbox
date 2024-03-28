@@ -1,7 +1,8 @@
+import MD5Form from '@/components/md5-form'
 import SecretForm from '@/components/secret-form'
 import UuidForm from '@/components/uuid-form'
-import MD5Form from '@/components/md5-form'
 
+import CommitLint from '@/components/commit-lint'
 import {
   Card,
   CardContent,
@@ -9,7 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Hash, Lock, TableProperties } from 'lucide-react'
+import { Hash, Lock, SpellCheck, TableProperties } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -52,6 +54,27 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <MD5Form />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <SpellCheck className="inline-block mr-2" />
+            Commit Lint
+          </CardTitle>
+          <CardDescription>
+            Generate your commit messages based on the{' '}
+            <Link
+              href="https://www.conventionalcommits.org/en/v1.0.0/"
+              className="underline"
+            >
+              Conventional Commits specification.
+            </Link>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <CommitLint />
         </CardContent>
       </Card>
     </div>
