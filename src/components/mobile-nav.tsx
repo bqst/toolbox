@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import {
+  ArrowUpDown,
   Calculator,
   Code,
   Hash,
@@ -50,6 +51,11 @@ const featuresByTheme = {
       title: 'JSON Minify/Unminify',
       href: '#json-minify-unminify',
       icon: Code,
+    },
+    {
+      title: 'Sort And Dedupe',
+      href: '#sort-dedupe',
+      icon: ArrowUpDown,
     },
   ],
   'security-generators': [

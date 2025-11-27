@@ -13,6 +13,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu'
 import {
+  ArrowUpDown,
   Calculator,
   Code,
   Hash,
@@ -60,6 +61,13 @@ const featuresByTheme = {
       description:
         'Minify JSON by removing whitespace or unminify with customizable tab size.',
       icon: Code,
+    },
+    {
+      title: 'Sort And Dedupe',
+      href: '#sort-dedupe',
+      description:
+        'Sort comma-separated values A-Z or Z-A and optionally remove duplicates.',
+      icon: ArrowUpDown,
     },
   ],
   'security-generators': [
@@ -190,7 +198,7 @@ export function MainNav() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Development</NavigationMenuTrigger>
-            <NavigationMenuContent>
+            <NavigationMenuContent className="p-2">
               <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                 {featuresByTheme.development.map((feature) => {
                   const Icon = feature.icon

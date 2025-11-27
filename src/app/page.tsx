@@ -6,6 +6,7 @@ import VATCalculator from '@/components/vat-calculator'
 import SlugForm from '@/components/slug-form'
 import Base64ImageForm from '@/components/base64-image-form'
 import JsonForm from '@/components/json-form'
+import SortDedupeForm from '@/components/sort-dedupe-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -16,6 +17,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import {
+  ArrowUpDown,
   Calculator,
   Code,
   Hash,
@@ -168,6 +170,22 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <JsonForm />
+        </CardContent>
+      </Card>
+
+      <Card id="sort-dedupe">
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <ArrowUpDown className="inline-block mr-2" />
+            Sort And Dedupe
+          </CardTitle>
+          <CardDescription>
+            Sort comma-separated values A-Z or Z-A and optionally remove
+            duplicates.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <SortDedupeForm />
         </CardContent>
       </Card>
     </div>
