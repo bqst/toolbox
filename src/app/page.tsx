@@ -1,6 +1,7 @@
 import MD5Form from '@/components/md5-form'
 import SecretForm from '@/components/secret-form'
 import UuidForm from '@/components/uuid-form'
+import CrossMultiplicationForm from '@/components/cross-multiplication-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -10,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Hash, Lock, SpellCheck, TableProperties } from 'lucide-react'
+import { Calculator, Hash, Lock, SpellCheck, TableProperties } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
@@ -75,6 +76,21 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <CommitLint />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <Calculator className="inline-block mr-2" />
+            Cross Multiplication Calculator
+          </CardTitle>
+          <CardDescription>
+            Solve proportions using cross multiplication (A/B = C/D).
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <CrossMultiplicationForm />
         </CardContent>
       </Card>
     </div>
