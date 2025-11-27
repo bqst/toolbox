@@ -18,6 +18,7 @@ import {
   Image as ImageIcon,
   Link as LinkIcon,
   Lock,
+  QrCode,
   Receipt,
   SpellCheck,
   TableProperties,
@@ -41,6 +42,11 @@ const featuresByTheme = {
       title: 'Slug Generator',
       href: '#slug-generator',
       icon: LinkIcon,
+    },
+    {
+      title: 'QR Code Generator',
+      href: '#qr-code-generator',
+      icon: QrCode,
     },
     {
       title: 'Base64 Image Encode',
@@ -199,7 +205,7 @@ function MobileLink({
 }: MobileLinkProps) {
   const router = useRouter()
   const isAnchor = href.toString().startsWith('#')
-  
+
   return (
     <Link
       href={href}

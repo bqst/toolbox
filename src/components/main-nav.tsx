@@ -20,6 +20,7 @@ import {
   Image as ImageIcon,
   Link as LinkIcon,
   Lock,
+  QrCode,
   Receipt,
   SpellCheck,
   TableProperties,
@@ -48,6 +49,12 @@ const featuresByTheme = {
       description:
         'Generate URL-friendly slugs from text. Remove special characters and optionally filter stop words.',
       icon: LinkIcon,
+    },
+    {
+      title: 'QR Code Generator',
+      href: '#qr-code-generator',
+      description: 'Generate QR codes from text or URLs with download option.',
+      icon: QrCode,
     },
     {
       title: 'Base64 Image Encode',

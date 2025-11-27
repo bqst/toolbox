@@ -7,6 +7,7 @@ import SlugForm from '@/components/slug-form'
 import Base64ImageForm from '@/components/base64-image-form'
 import JsonForm from '@/components/json-form'
 import SortDedupeForm from '@/components/sort-dedupe-form'
+import QRCodeForm from '@/components/qr-code-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -24,6 +25,7 @@ import {
   Image as ImageIcon,
   Link as LinkIcon,
   Lock,
+  QrCode,
   Receipt,
   SpellCheck,
   TableProperties,
@@ -62,6 +64,21 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <SlugForm />
+        </CardContent>
+      </Card>
+
+      <Card id="qr-code-generator">
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <QrCode className="inline-block mr-2" />
+            QR Code Generator
+          </CardTitle>
+          <CardDescription>
+            Generate QR codes from text or URLs with download option.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <QRCodeForm />
         </CardContent>
       </Card>
 
