@@ -21,16 +21,16 @@ More features are coming soon.
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/) >= 18.0.0
-- [Yarn](https://yarnpkg.com/) >= 1.22.0
+- [pnpm](https://pnpm.io/) >= 8.0.0
 
 ### Development
 
 ```bash
 # Install dependencies
-yarn
+pnpm install
 
 # Run the development server
-yarn dev
+pnpm dev
 ```
 
 ## Authors
