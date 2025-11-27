@@ -31,7 +31,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card>
+      <Card id="vat-calculator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Receipt className="inline-block mr-2" />
@@ -47,7 +47,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="slug-generator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <LinkIcon className="inline-block mr-2" />
@@ -63,7 +63,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="cross-multiplication-calculator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Calculator className="inline-block mr-2" />
@@ -78,7 +78,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="password-generator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Lock className="inline-block mr-2" />
@@ -93,7 +93,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="uuid-generator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <TableProperties className="inline-block mr-2" />
@@ -106,7 +106,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="md5-hash-generator">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Hash className="inline-block mr-2" />
@@ -119,7 +119,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="base64-image-encode">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <ImageIcon className="inline-block mr-2" />
@@ -134,7 +134,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="commit-lint">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <SpellCheck className="inline-block mr-2" />
@@ -155,7 +155,7 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card id="json-minify-unminify">
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Code className="inline-block mr-2" />

@@ -10,6 +10,73 @@ import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import {
+  Calculator,
+  Code,
+  Hash,
+  Image as ImageIcon,
+  Link as LinkIcon,
+  Lock,
+  Receipt,
+  SpellCheck,
+  TableProperties,
+} from 'lucide-react'
+
+const featuresByTheme = {
+  calculators: [
+    {
+      title: 'VAT Calculator',
+      href: '#vat-calculator',
+      icon: Receipt,
+    },
+    {
+      title: 'Cross Multiplication Calculator',
+      href: '#cross-multiplication-calculator',
+      icon: Calculator,
+    },
+  ],
+  'text-encoding': [
+    {
+      title: 'Slug Generator',
+      href: '#slug-generator',
+      icon: LinkIcon,
+    },
+    {
+      title: 'Base64 Image Encode',
+      href: '#base64-image-encode',
+      icon: ImageIcon,
+    },
+    {
+      title: 'JSON Minify/Unminify',
+      href: '#json-minify-unminify',
+      icon: Code,
+    },
+  ],
+  'security-generators': [
+    {
+      title: 'Password Generator',
+      href: '#password-generator',
+      icon: Lock,
+    },
+    {
+      title: 'UUID Generator',
+      href: '#uuid-generator',
+      icon: TableProperties,
+    },
+    {
+      title: 'MD5 Hash Generator',
+      href: '#md5-hash-generator',
+      icon: Hash,
+    },
+  ],
+  development: [
+    {
+      title: 'Commit Lint',
+      href: '#commit-lint',
+      icon: SpellCheck,
+    },
+  ],
+}
 
 export function MobileNav() {
   const [open, setOpen] = useState(false)
@@ -35,43 +102,75 @@ export function MobileNav() {
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
-          <div className="flex flex-col space-y-3">
-            {/* {docsConfig.mainNav?.map(
-              (item) =>
-                item.href && (
+          <div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-3">
+              <h4 className="font-medium">Calculators</h4>
+              {featuresByTheme.calculators.map((feature) => {
+                const Icon = feature.icon
+                return (
                   <MobileLink
-                    key={item.href}
-                    href={item.href}
+                    key={feature.href}
+                    href={feature.href}
                     onOpenChange={setOpen}
+                    className="flex items-center gap-2 text-muted-foreground"
                   >
-                    {item.title}
+                    <Icon className="h-4 w-4" />
+                    {feature.title}
                   </MobileLink>
                 )
-            )} */}
-          </div>
-          <div className="flex flex-col space-y-2">
-            {/* {docsConfig.sidebarNav.map((item, index) => (
-              <div key={index} className="flex flex-col space-y-3 pt-6">
-                <h4 className="font-medium">{item.title}</h4>
-                {item?.items?.length &&
-                  item.items.map((item) => (
-                    <React.Fragment key={item.href}>
-                      {!item.disabled &&
-                        (item.href ? (
-                          <MobileLink
-                            href={item.href}
-                            onOpenChange={setOpen}
-                            className="text-muted-foreground"
-                          >
-                            {item.title}
-                          </MobileLink>
-                        ) : (
-                          item.title
-                        ))}
-                    </React.Fragment>
-                  ))}
-              </div>
-            ))} */}
+              })}
+            </div>
+            <div className="flex flex-col space-y-3">
+              <h4 className="font-medium">Text & Encoding</h4>
+              {featuresByTheme['text-encoding'].map((feature) => {
+                const Icon = feature.icon
+                return (
+                  <MobileLink
+                    key={feature.href}
+                    href={feature.href}
+                    onOpenChange={setOpen}
+                    className="flex items-center gap-2 text-muted-foreground"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {feature.title}
+                  </MobileLink>
+                )
+              })}
+            </div>
+            <div className="flex flex-col space-y-3">
+              <h4 className="font-medium">Security & Generators</h4>
+              {featuresByTheme['security-generators'].map((feature) => {
+                const Icon = feature.icon
+                return (
+                  <MobileLink
+                    key={feature.href}
+                    href={feature.href}
+                    onOpenChange={setOpen}
+                    className="flex items-center gap-2 text-muted-foreground"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {feature.title}
+                  </MobileLink>
+                )
+              })}
+            </div>
+            <div className="flex flex-col space-y-3">
+              <h4 className="font-medium">Development</h4>
+              {featuresByTheme.development.map((feature) => {
+                const Icon = feature.icon
+                return (
+                  <MobileLink
+                    key={feature.href}
+                    href={feature.href}
+                    onOpenChange={setOpen}
+                    className="flex items-center gap-2 text-muted-foreground"
+                  >
+                    <Icon className="h-4 w-4" />
+                    {feature.title}
+                  </MobileLink>
+                )
+              })}
+            </div>
           </div>
         </ScrollArea>
       </SheetContent>
@@ -93,11 +192,21 @@ function MobileLink({
   ...props
 }: MobileLinkProps) {
   const router = useRouter()
+  const isAnchor = href.toString().startsWith('#')
+  
   return (
     <Link
       href={href}
-      onClick={() => {
-        router.push(href.toString())
+      onClick={(e) => {
+        if (isAnchor) {
+          e.preventDefault()
+          const element = document.querySelector(href.toString())
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        } else {
+          router.push(href.toString())
+        }
         onOpenChange?.(false)
       }}
       className={cn(className)}
