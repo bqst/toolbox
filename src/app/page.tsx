@@ -5,6 +5,7 @@ import CrossMultiplicationForm from '@/components/cross-multiplication-form'
 import VATCalculator from '@/components/vat-calculator'
 import SlugForm from '@/components/slug-form'
 import Base64ImageForm from '@/components/base64-image-form'
+import JsonForm from '@/components/json-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -16,6 +17,7 @@ import {
 } from '@/components/ui/card'
 import {
   Calculator,
+  Code,
   Hash,
   Image as ImageIcon,
   Link as LinkIcon,
@@ -150,6 +152,22 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <CommitLint />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <Code className="inline-block mr-2" />
+            JSON Minify/Unminify
+          </CardTitle>
+          <CardDescription>
+            Minify JSON by removing whitespace or unminify with customizable tab
+            size (default 2).
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <JsonForm />
         </CardContent>
       </Card>
     </div>
