@@ -99,6 +99,18 @@ const featuresByTheme = {
 export function MobileNav() {
   const [open, setOpen] = useState(false)
 
+  const handleLinkClick = (href: string) => {
+    // Extract the ID from the href (e.g., "#vat-calculator" -> "vat-calculator")
+    const cardId = href.replace('#', '')
+
+    // Dispatch a custom event to trigger the card animation
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('animateCard', { detail: { cardId } })
+      )
+    }
+  }
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -130,6 +142,7 @@ export function MobileNav() {
                     key={feature.href}
                     href={feature.href}
                     onOpenChange={setOpen}
+                    onClick={() => handleLinkClick(feature.href)}
                     className="flex items-center gap-2 text-muted-foreground"
                   >
                     <Icon className="h-4 w-4" />
@@ -147,6 +160,7 @@ export function MobileNav() {
                     key={feature.href}
                     href={feature.href}
                     onOpenChange={setOpen}
+                    onClick={() => handleLinkClick(feature.href)}
                     className="flex items-center gap-2 text-muted-foreground"
                   >
                     <Icon className="h-4 w-4" />
@@ -164,6 +178,7 @@ export function MobileNav() {
                     key={feature.href}
                     href={feature.href}
                     onOpenChange={setOpen}
+                    onClick={() => handleLinkClick(feature.href)}
                     className="flex items-center gap-2 text-muted-foreground"
                   >
                     <Icon className="h-4 w-4" />
@@ -181,6 +196,7 @@ export function MobileNav() {
                     key={feature.href}
                     href={feature.href}
                     onOpenChange={setOpen}
+                    onClick={() => handleLinkClick(feature.href)}
                     className="flex items-center gap-2 text-muted-foreground"
                   >
                     <Icon className="h-4 w-4" />
@@ -200,6 +216,7 @@ interface MobileLinkProps extends LinkProps {
   onOpenChange?: (open: boolean) => void
   children: React.ReactNode
   className?: string
+  onClick?: () => void
 }
 
 function MobileLink({
@@ -207,6 +224,7 @@ function MobileLink({
   onOpenChange,
   className,
   children,
+  onClick,
   ...props
 }: MobileLinkProps) {
   const router = useRouter()
@@ -216,11 +234,20 @@ function MobileLink({
     <Link
       href={href}
       onClick={(e) => {
+        onClick?.()
         if (isAnchor) {
           e.preventDefault()
           const element = document.querySelector(href.toString())
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth' })
+            const headerHeight = 72 // h-14 = 56px + 16px offset
+            const elementPosition =
+              element.getBoundingClientRect().top + window.pageYOffset
+            const offsetPosition = elementPosition - headerHeight
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth',
+            })
           }
         } else {
           router.push(href.toString())

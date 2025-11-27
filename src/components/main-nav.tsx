@@ -116,6 +116,38 @@ const featuresByTheme = {
 }
 
 export function MainNav() {
+  const handleLinkClick = (
+    href: string,
+    e: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    // Extract the ID from the href (e.g., "#vat-calculator" -> "vat-calculator")
+    const cardId = href.replace('#', '')
+
+    // Dispatch a custom event to trigger the card animation
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('animateCard', { detail: { cardId } })
+      )
+
+      // Handle scroll with offset for anchor links
+      if (href.startsWith('#')) {
+        e.preventDefault()
+        const element = document.querySelector(href)
+        if (element) {
+          const headerHeight = 72 // h-14 = 56px + 16px offset
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = elementPosition - headerHeight
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          })
+        }
+      }
+    }
+  }
+
   return (
     <div className="mr-4 hidden md:flex">
       <Link href="/" className="mr-6 flex items-center space-x-2">
@@ -137,6 +169,7 @@ export function MainNav() {
                       <NavigationMenuLink asChild>
                         <Link
                           href={feature.href}
+                          onClick={(e) => handleLinkClick(feature.href, e)}
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         >
                           <div className="flex items-center gap-2 text-sm font-medium leading-none line-clamp-1">
@@ -165,6 +198,7 @@ export function MainNav() {
                       <NavigationMenuLink asChild>
                         <Link
                           href={feature.href}
+                          onClick={(e) => handleLinkClick(feature.href, e)}
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         >
                           <div className="flex items-center gap-2 text-sm font-medium leading-none line-clamp-1">
@@ -193,6 +227,7 @@ export function MainNav() {
                       <NavigationMenuLink asChild>
                         <Link
                           href={feature.href}
+                          onClick={(e) => handleLinkClick(feature.href, e)}
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         >
                           <div className="flex items-center gap-2 text-sm font-medium leading-none line-clamp-1">
@@ -221,6 +256,7 @@ export function MainNav() {
                       <NavigationMenuLink asChild>
                         <Link
                           href={feature.href}
+                          onClick={(e) => handleLinkClick(feature.href, e)}
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         >
                           <div className="flex items-center gap-2 text-sm font-medium leading-none">

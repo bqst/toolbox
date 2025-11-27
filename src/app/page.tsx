@@ -1,3 +1,5 @@
+'use client'
+
 import MD5Form from '@/components/md5-form'
 import SecretForm from '@/components/secret-form'
 import UuidForm from '@/components/uuid-form'
@@ -33,11 +35,41 @@ import {
   TableProperties,
 } from 'lucide-react'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 export default function Home() {
+  const [animatedCardId, setAnimatedCardId] = useState<string | null>(null)
+
+  useEffect(() => {
+    const handleAnimateCard = (event: CustomEvent<{ cardId: string }>) => {
+      const { cardId } = event.detail
+      setAnimatedCardId(cardId)
+
+      // Remove animation class after animation completes
+      setTimeout(() => {
+        setAnimatedCardId(null)
+      }, 900) // Match animation duration
+    }
+
+    window.addEventListener('animateCard', handleAnimateCard as EventListener)
+
+    return () => {
+      window.removeEventListener(
+        'animateCard',
+        handleAnimateCard as EventListener
+      )
+    }
+  }, [])
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card id="vat-calculator">
+      <Card
+        id="vat-calculator"
+        className={cn(
+          animatedCardId === 'vat-calculator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Receipt className="inline-block mr-2" />
@@ -53,7 +85,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="slug-generator">
+      <Card
+        id="slug-generator"
+        className={cn(
+          animatedCardId === 'slug-generator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <LinkIcon className="inline-block mr-2" />
@@ -69,7 +106,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="qr-code-generator">
+      <Card
+        id="qr-code-generator"
+        className={cn(
+          animatedCardId === 'qr-code-generator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <QrCode className="inline-block mr-2" />
@@ -84,7 +126,13 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="cross-multiplication-calculator">
+      <Card
+        id="cross-multiplication-calculator"
+        className={cn(
+          animatedCardId === 'cross-multiplication-calculator' &&
+            'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Calculator className="inline-block mr-2" />
@@ -99,7 +147,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="password-generator">
+      <Card
+        id="password-generator"
+        className={cn(
+          animatedCardId === 'password-generator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Lock className="inline-block mr-2" />
@@ -114,7 +167,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="uuid-generator">
+      <Card
+        id="uuid-generator"
+        className={cn(
+          animatedCardId === 'uuid-generator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <TableProperties className="inline-block mr-2" />
@@ -127,7 +185,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="md5-hash-generator">
+      <Card
+        id="md5-hash-generator"
+        className={cn(
+          animatedCardId === 'md5-hash-generator' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Hash className="inline-block mr-2" />
@@ -140,7 +203,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="jwt-viewer">
+      <Card
+        id="jwt-viewer"
+        className={cn(
+          animatedCardId === 'jwt-viewer' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Key className="inline-block mr-2" />
@@ -155,7 +223,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="base64-image-encode">
+      <Card
+        id="base64-image-encode"
+        className={cn(
+          animatedCardId === 'base64-image-encode' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <ImageIcon className="inline-block mr-2" />
@@ -170,7 +243,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="commit-lint">
+      <Card
+        id="commit-lint"
+        className={cn(
+          animatedCardId === 'commit-lint' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <SpellCheck className="inline-block mr-2" />
@@ -191,7 +269,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="json-minify-unminify">
+      <Card
+        id="json-minify-unminify"
+        className={cn(
+          animatedCardId === 'json-minify-unminify' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <Code className="inline-block mr-2" />
@@ -207,7 +290,12 @@ export default function Home() {
         </CardContent>
       </Card>
 
-      <Card id="sort-dedupe">
+      <Card
+        id="sort-dedupe"
+        className={cn(
+          animatedCardId === 'sort-dedupe' && 'animate-card-highlight'
+        )}
+      >
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
             <ArrowUpDown className="inline-block mr-2" />
