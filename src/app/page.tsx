@@ -4,6 +4,7 @@ import UuidForm from '@/components/uuid-form'
 import CrossMultiplicationForm from '@/components/cross-multiplication-form'
 import VATCalculator from '@/components/vat-calculator'
 import SlugForm from '@/components/slug-form'
+import Base64ImageForm from '@/components/base64-image-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -16,6 +17,7 @@ import {
 import {
   Calculator,
   Hash,
+  Image as ImageIcon,
   Link as LinkIcon,
   Lock,
   Receipt,
@@ -112,6 +114,21 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <MD5Form />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <ImageIcon className="inline-block mr-2" />
+            Base64 Image Encode
+          </CardTitle>
+          <CardDescription>
+            Convert an image file to Base64 encoded string.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Base64ImageForm />
         </CardContent>
       </Card>
 
