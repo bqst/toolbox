@@ -8,6 +8,7 @@ import Base64ImageForm from '@/components/base64-image-form'
 import JsonForm from '@/components/json-form'
 import SortDedupeForm from '@/components/sort-dedupe-form'
 import QRCodeForm from '@/components/qr-code-form'
+import JwtViewer from '@/components/jwt-viewer'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -23,6 +24,7 @@ import {
   Code,
   Hash,
   Image as ImageIcon,
+  Key,
   Link as LinkIcon,
   Lock,
   QrCode,
@@ -135,6 +137,21 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <MD5Form />
+        </CardContent>
+      </Card>
+
+      <Card id="jwt-viewer">
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <Key className="inline-block mr-2" />
+            JWT Viewer
+          </CardTitle>
+          <CardDescription>
+            Decode and view the header and payload of a JWT token.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <JwtViewer />
         </CardContent>
       </Card>
 

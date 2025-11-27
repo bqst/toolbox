@@ -16,6 +16,7 @@ import {
   Code,
   Hash,
   Image as ImageIcon,
+  Key,
   Link as LinkIcon,
   Lock,
   QrCode,
@@ -79,6 +80,11 @@ const featuresByTheme = {
       title: 'MD5 Hash Generator',
       href: '#md5-hash-generator',
       icon: Hash,
+    },
+    {
+      title: 'JWT Viewer',
+      href: '#jwt-viewer',
+      icon: Key,
     },
   ],
   development: [
