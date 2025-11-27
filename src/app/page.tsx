@@ -3,6 +3,7 @@ import SecretForm from '@/components/secret-form'
 import UuidForm from '@/components/uuid-form'
 import CrossMultiplicationForm from '@/components/cross-multiplication-form'
 import VATCalculator from '@/components/vat-calculator'
+import SlugForm from '@/components/slug-form'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -15,6 +16,7 @@ import {
 import {
   Calculator,
   Hash,
+  Link as LinkIcon,
   Lock,
   Receipt,
   SpellCheck,
@@ -38,6 +40,37 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <VATCalculator />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <LinkIcon className="inline-block mr-2" />
+            Slug Generator
+          </CardTitle>
+          <CardDescription>
+            Generate URL-friendly slugs from text. Remove special characters and
+            optionally filter stop words (French, English, or custom).
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <SlugForm />
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <Calculator className="inline-block mr-2" />
+            Cross Multiplication Calculator
+          </CardTitle>
+          <CardDescription>
+            Solve proportions using cross multiplication (A/B = C/D).
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <CrossMultiplicationForm />
         </CardContent>
       </Card>
 
@@ -100,21 +133,6 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <CommitLint />
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex flex-row items-center">
-            <Calculator className="inline-block mr-2" />
-            Cross Multiplication Calculator
-          </CardTitle>
-          <CardDescription>
-            Solve proportions using cross multiplication (A/B = C/D).
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <CrossMultiplicationForm />
         </CardContent>
       </Card>
     </div>
