@@ -2,6 +2,7 @@ import MD5Form from '@/components/md5-form'
 import SecretForm from '@/components/secret-form'
 import UuidForm from '@/components/uuid-form'
 import CrossMultiplicationForm from '@/components/cross-multiplication-form'
+import VATCalculator from '@/components/vat-calculator'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -11,12 +12,35 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Calculator, Hash, Lock, SpellCheck, TableProperties } from 'lucide-react'
+import {
+  Calculator,
+  Hash,
+  Lock,
+  Receipt,
+  SpellCheck,
+  TableProperties,
+} from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <Receipt className="inline-block mr-2" />
+            VAT Calculator
+          </CardTitle>
+          <CardDescription>
+            Calculate prices with or without VAT. Supports French and US tax
+            rates, or custom rates.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <VATCalculator />
+        </CardContent>
+      </Card>
+
       <Card>
         <CardHeader>
           <CardTitle className="flex flex-row items-center">
