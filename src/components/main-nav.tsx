@@ -16,6 +16,7 @@ import {
   ArrowUpDown,
   Calculator,
   Code,
+  ExternalLink,
   Hash,
   Image as ImageIcon,
   Key,
@@ -76,6 +77,13 @@ const featuresByTheme = {
       description:
         'Sort comma-separated values A-Z or Z-A and optionally remove duplicates.',
       icon: ArrowUpDown,
+    },
+    {
+      title: 'Bulk URL Opener',
+      href: '#bulk-url-opener',
+      description:
+        'Open multiple URLs at once with customizable options.',
+      icon: ExternalLink,
     },
   ],
   'security-generators': [

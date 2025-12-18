@@ -14,6 +14,7 @@ import {
   ArrowUpDown,
   Calculator,
   Code,
+  ExternalLink,
   Hash,
   Image as ImageIcon,
   Key,
@@ -63,6 +64,11 @@ const featuresByTheme = {
       title: 'Sort And Dedupe',
       href: '#sort-dedupe',
       icon: ArrowUpDown,
+    },
+    {
+      title: 'Bulk URL Opener',
+      href: '#bulk-url-opener',
+      icon: ExternalLink,
     },
   ],
   'security-generators': [

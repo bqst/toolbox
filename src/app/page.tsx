@@ -11,6 +11,7 @@ import JsonForm from '@/components/json-form'
 import SortDedupeForm from '@/components/sort-dedupe-form'
 import QRCodeForm from '@/components/qr-code-form'
 import JwtViewer from '@/components/jwt-viewer'
+import BulkUrlOpener from '@/components/bulk-url-opener'
 
 import CommitLint from '@/components/commit-lint'
 import {
@@ -24,6 +25,7 @@ import {
   ArrowUpDown,
   Calculator,
   Code,
+  ExternalLink,
   Hash,
   Image as ImageIcon,
   Key,
@@ -308,6 +310,26 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <SortDedupeForm />
+        </CardContent>
+      </Card>
+
+      <Card
+        id="bulk-url-opener"
+        className={cn(
+          animatedCardId === 'bulk-url-opener' && 'animate-card-highlight'
+        )}
+      >
+        <CardHeader>
+          <CardTitle className="flex flex-row items-center">
+            <ExternalLink className="inline-block mr-2" />
+            Bulk URL Opener
+          </CardTitle>
+          <CardDescription>
+            Open multiple URLs at once with customizable options.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <BulkUrlOpener />
         </CardContent>
       </Card>
     </div>
